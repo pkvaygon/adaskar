@@ -27,11 +27,13 @@ import { Icon } from "@iconify/react";
 import { navLinks } from "@/static";
 import { LogoIcon } from "@/icons";
 import { ThemeSwitcher } from "./ThemeSwitcher";
-import { redirect } from "next/navigation";
 import { signIn, signOut, useSession } from "next-auth/react";
 
 export default function Header() {
   const user = useSession().data?.user
+  React.useEffect(() => {
+    console.log(user)
+  },[user])
   return (
     <Navbar
       classNames={{

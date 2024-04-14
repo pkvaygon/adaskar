@@ -28,14 +28,17 @@ export const authConfig = {
         const existingUser = await mongoDBAdapter.getUserByEmail(user.email);
         if (!existingUser) {
           const newUser = await mongoDBAdapter.createUser({
+            id: user.id,
             provider: account.provider,
-            email: user.email,
-            name: user.name,
-            avatar: user.image,
+            email: profile.email,
+            firstName: profile.given_name,
+            lastName: profile.family_name,
+            fullName: profile.name,
+            avatar: profile.picture,
             subscription: false,
             ads: [],
             phoneNumber: null,
-            username: profile.given_name,
+            username: profile.name,
             emailVerified: profile.email_verified || false,
           });
           console.log("New USER ADDED", newUser)

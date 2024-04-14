@@ -8,7 +8,9 @@ declare module "next-auth" {
     id: string;
     provider: string;
     email: string;
-    name: string;
+    firstName: string;
+    lastName: string;
+    fullName: string;
     avatar: string;
     subscription: boolean;
     ads: string[];
