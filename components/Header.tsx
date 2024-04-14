@@ -28,6 +28,7 @@ import { navLinks } from "@/static";
 import { LogoIcon } from "@/icons";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import { signIn, signOut, useSession } from "next-auth/react";
+import SelectLocationComponent from "./SelectLocationComponent";
 
 export default function Header() {
   const user = useSession().data?.user
@@ -37,7 +38,7 @@ export default function Header() {
   return (
     <Navbar
       classNames={{
-        base: "lg:bg-transparent lg:backdrop-filter-none",
+        // base: "lg:bg-transparent lg:backdrop-filter-none",
         item: "data-[active=true]:text-primary",
         wrapper: "px-4 sm:px-6",
       }}
@@ -49,7 +50,7 @@ export default function Header() {
       </NavbarBrand>
       <NavbarContent
         className="ml-4 hidden h-12 w-full max-w-fit gap-4 rounded-full bg-content2 px-4 dark:bg-content1 sm:flex"
-        justify="start">
+        justify="center">
         {navLinks.map((el) => (
           <NavbarItem key={el.id}>
             <Link className="flex gap-2 text-inherit" href={el.href}>
@@ -59,28 +60,14 @@ export default function Header() {
         ))}
       </NavbarContent>
       <NavbarContent
-        className="ml-auto flex h-12 max-w-fit items-center gap-0 rounded-full p-0 lg:bg-content2 lg:px-1 lg:dark:bg-content1"
-        justify="end">
-        <NavbarItem className="hidden sm:flex">
-          <Button isIconOnly radius="full" variant="light">
-            <Icon
-              className="text-default-500"
-              icon="solar:magnifer-linear"
-              width={22}
-            />
-          </Button>
+        className="ml-auto flex h-12 max-w-max items-center gap-2 rounded-full p-0 overflow-hidden lg:bg-content2 lg:p-1 lg:dark:bg-content1"
+        justify="end"
+      >
+        <NavbarItem className="w-[300px]">
+         <SelectLocationComponent/>
         </NavbarItem>
         <NavbarItem className="hidden sm:flex">
           <ThemeSwitcher/>
-        </NavbarItem>
-        <NavbarItem className="hidden sm:flex">
-          <Button isIconOnly radius="full" variant="light">
-            <Icon
-              className="text-default-500"
-              icon="solar:settings-linear"
-              width={24}
-            />
-          </Button>
         </NavbarItem>
         <NavbarItem className="flex">
           <Popover offset={12} placement="bottom-end">
