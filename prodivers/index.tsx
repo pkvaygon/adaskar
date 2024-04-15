@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 
 interface ProviderProps{
   children: React.ReactNode,
-  session: Session | undefined | null
+  session?: Session | undefined | null
 }
 export function Providers({ children, session }: ProviderProps) {
   const router = useRouter();
