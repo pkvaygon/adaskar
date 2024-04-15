@@ -8,12 +8,11 @@ import { useRouter } from "next/navigation";
 
 interface ProviderProps{
   children: React.ReactNode,
-  session?: Session | undefined | null
 }
-export function Providers({ children, session }: ProviderProps) {
+export function Providers({ children }: ProviderProps) {
   const router = useRouter();
   return (
-    <SessionProvider session={session}>
+    <SessionProvider>
         <NextUIProvider navigate={router.push}>
           <NextThemesProvider
             enableColorScheme
