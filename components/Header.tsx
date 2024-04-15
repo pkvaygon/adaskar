@@ -28,7 +28,7 @@ import { navLinks } from "@/static";
 import { LogoIcon } from "@/icons";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import { signIn, signOut, useSession } from "next-auth/react";
-import SelectLocationComponent from "./SelectLocationComponent";
+import SelectStateComponent from "./SelectStateComponent";
 
 export default function Header() {
   const user = useSession().data?.user
@@ -60,16 +60,16 @@ export default function Header() {
         ))}
       </NavbarContent>
       <NavbarContent
-        className="ml-auto flex h-12 max-w-max items-center gap-2 rounded-full p-0 overflow-hidden lg:bg-content2 lg:p-1 lg:dark:bg-content1"
+        className="ml-auto flex h-12 max-w-max items-center gap-2 rounded-full p-0 lg:bg-content2 lg:p-1 lg:dark:bg-content1"
         justify="end"
       >
-        <NavbarItem className="w-[300px]">
-         <SelectLocationComponent/>
+        <NavbarItem className="w-[180px] max-md:hidden">
+         <SelectStateComponent/>
         </NavbarItem>
-        <NavbarItem className="hidden sm:flex">
+        <NavbarItem className=" sm:flex">
           <ThemeSwitcher/>
         </NavbarItem>
-        <NavbarItem className="flex">
+        <NavbarItem className="flex max-md:hidden">
           <Popover offset={12} placement="bottom-end">
             <PopoverTrigger>
               <Button
@@ -141,7 +141,6 @@ export default function Header() {
         </NavbarItem>
       </NavbarContent>
 
-      {/* Mobile Menu */}
       <NavbarMenu>
       {navLinks.map((el) => (
           <NavbarMenuItem key={el.id}>
