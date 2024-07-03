@@ -3,8 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import { Providers } from "@/prodivers";
-import { SessionProvider } from "next-auth/react";
-
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -37,7 +35,7 @@ export default function RootLayout({
             filter="url(#pedroduarteisalegend)"></rect>
         </svg>
         <Providers>
-            <Header/>
+          <Header />
               {children}
         </Providers>
       </body>

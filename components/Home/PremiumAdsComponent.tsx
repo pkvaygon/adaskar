@@ -1,5 +1,6 @@
 import PremiumCard from "./PremiumCard";
 
+
 export default function PremiumAdsComponent() {
   return (
     <section className="h-[300px] ">
