@@ -19,11 +19,15 @@ export default function SearchAdsPage({
   return (
     <div className="flex h-auto w-full p-2">
       <aside className="w-1/4 border-divider border-small rounded-lg h-dvh">
-        <SidebarComponent filteredAds={filteredAds} />
+        <Suspense fallback={<Loading />}>
+          <SidebarComponent filteredAds={filteredAds} />
+        </Suspense>
       </aside>
       <section className="w-full flex-1 flex-col pl-2 h-auto">
         <section className="flex h-16 items-center gap-2 rounded-medium border-small border-divider px-4">
-          <TopSidebar />
+          <Suspense fallback={<Loading />}>
+            <TopSidebar />
+          </Suspense>
         </section>
         <section className="mt-4 h-full w-full overflow-visible">
           <div className="min-h-[90%] h-auto py-2 w-full grid grid-cols-3 gap-4 rounded-medium border-small p-2 border-divider">
