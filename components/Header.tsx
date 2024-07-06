@@ -27,14 +27,10 @@ import { Icon } from "@iconify/react";
 import { navLinks } from "@/static";
 import { LogoIcon } from "@/icons";
 import { ThemeSwitcher } from "./ThemeSwitcher";
-import { signIn, signOut, useSession } from "next-auth/react";
 import SelectStateComponent from "./SelectStateComponent";
 
 export default function Header() {
-  const user = useSession().data?.user;
-  // React.useEffect(() => {
-  //   console.log(user);
-  // }, [user]);
+ 
   return (
     <Navbar
       classNames={{
@@ -46,7 +42,7 @@ export default function Header() {
       <NavbarBrand className="flex gap-2">
         <NavbarMenuToggle className="mr-2 h-6 sm:hidden" />
         <LogoIcon size={24} width={24} height={24} />
-        <p className="font-bold text-inherit">AdAlmaz</p>
+        <p className="font-bold text-inherit">AdZone</p>
       </NavbarBrand>
       <NavbarContent
         className="ml-4 hidden h-12 w-full max-w-fit gap-4 rounded-full bg-content2 px-4 dark:bg-content1 sm:flex"
@@ -93,7 +89,7 @@ export default function Header() {
           </Popover>
         </NavbarItem>
         <NavbarItem className="px-2">
-          {user ? (
+          {true ? (
             <Dropdown placement="bottom-end">
               <DropdownTrigger>
                 <button className="mt-1 h-8 w-8 outline-none transition-transform">
@@ -104,7 +100,7 @@ export default function Header() {
                     placement="bottom-right"
                     shape="circle"
                     size="sm">
-                    <Avatar size="sm" src={user?.avatar} />
+                    <Avatar size="sm" />
                   </Badge>
                 </button>
               </DropdownTrigger>
@@ -114,7 +110,7 @@ export default function Header() {
                   key="profile"
                   className="h-14 gap-2 select-none cursor-default">
                   <p className="font-semibold">Signed in as</p>
-                  <p className="font-semibold">{user?.email}</p>
+                  <p className="font-semibold">somemail@gmail.com</p>
                 </DropdownItem>
                 <DropdownItem key="settings">My Settings</DropdownItem>
                 <DropdownItem key="team_settings">Team Settings</DropdownItem>
@@ -125,12 +121,12 @@ export default function Header() {
                   Help & Feedback
                 </DropdownItem>
                 <DropdownItem key="logout" color="danger">
-                  <Button onClick={() => signOut()}>Log Out</Button>
+                  <Button>Log Out</Button>
                 </DropdownItem>
               </DropdownMenu>
             </Dropdown>
           ) : (
-            <Button onClick={() => signIn("google")}>Sign In</Button>
+            <Button>Sign In</Button>
           )}
         </NavbarItem>
       </NavbarContent>

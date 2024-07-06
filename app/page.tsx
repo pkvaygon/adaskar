@@ -15,16 +15,15 @@ export default async function Home() {
             alt="AdAskar"
           />
           <div className="absolute left-1/2 top-1/3 transform -translate-x-1/2 -translate-y-1/2 text-center">
-            <h1 className="text-white text-5xl font-semibold">САЙТ ОБЪЯВЛЕНИЙ</h1>
+            <h1 className="text-white text-5xl font-semibold">
+              САЙТ ОБЪЯВЛЕНИЙ
+            </h1>
             <h6 className="text-white  text-2xl font-medium">
               Легко купить, легко продать
             </h6>
           </div>
-          <CategoriesComponent/>
+          <CategoriesComponent />
         </div>
-      </div>
-      <div>
-        {/* <PremiumAdsComponent /> */}
       </div>
     </section>
   );

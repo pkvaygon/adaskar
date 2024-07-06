@@ -4,20 +4,11 @@ import React from "react";
 
 import { Select, SelectItem } from "@nextui-org/react";
 import { states } from "@/static";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 export default function SelectStateComponent() {
-  const pathname = usePathname()
-  const {replace} = useRouter()
-  const searchParams = useSearchParams()
+
   const [value, setValue] = React.useState<any>([states[0].name]);
-  React.useEffect(() => {
-    const params = new URLSearchParams(searchParams)
-    if (searchParams.has('states') === false) {
-      params.set('states', states[0].name.toLowerCase())
-    }
-    replace(`${pathname}?${params.toString()}`)
-  }, [searchParams, pathname, replace])
+
   return (
     <>
       <Select

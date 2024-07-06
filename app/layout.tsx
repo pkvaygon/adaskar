@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning lang="en">
       <body className={inter.className}>
-      <svg
+        <svg
           className="pointer-events-none fixed isolate z-50 opacity-70 mix-blend-soft-light"
           width="100%"
           height="100%">
@@ -36,7 +36,7 @@ export default function RootLayout({
         </svg>
         <Providers>
           <Header />
-              {children}
+          {children}
         </Providers>
       </body>
     </html>
