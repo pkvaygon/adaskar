@@ -6,7 +6,7 @@ import { Providers } from "@/prodivers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "AdAskar",
+  title: "AdZone",
   description: "Nice name for ads website",
 };
 
