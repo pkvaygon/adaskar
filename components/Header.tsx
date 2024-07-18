@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
-import React from "react";
+import React, { Suspense } from "react";
 import {
   Navbar,
   NavbarBrand,
@@ -16,18 +16,19 @@ import {
   DropdownTrigger,
   DropdownMenu,
   DropdownItem,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
   Avatar,
   Badge,
 } from "@nextui-org/react";
-import { Icon } from "@iconify/react";
+
+import SelectCategory from "../components/SearchAds/SelectCategory";
+import Loading from "@/app/search-ads/loading";
 
 import { navLinks } from "@/static";
 import { LogoIcon } from "@/icons";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import SelectStateComponent from "./SelectStateComponent";
+import NotificationBage from './ui/notificationBage';
+import SearchBar from "./ui/searchbar";
 
 export default function Header() {
  
@@ -44,17 +45,13 @@ export default function Header() {
         <LogoIcon size={24} width={24} height={24} />
         <p className="font-bold text-inherit">AdZone</p>
       </NavbarBrand>
-      <NavbarContent
-        className="ml-4 hidden h-12 w-full max-w-fit gap-4 rounded-full bg-content2 px-4 dark:bg-content1 sm:flex"
-        justify="center">
-        {navLinks.map((el) => (
-          <NavbarItem key={el.id}>
-            <Link className="flex gap-2 text-inherit" href={el.href}>
-              {el.label}
-            </Link>
-          </NavbarItem>
-        ))}
-      </NavbarContent>
+      <Suspense fallback={<Loading />}>
+        <SelectCategory className="mr-auto" />
+      </Suspense>
+      <NavbarItem className="w-full max-md:hidden">
+        <SearchBar/>
+      </NavbarItem>
+
       <NavbarContent
         className="ml-auto flex h-12 max-w-max items-center gap-2 rounded-full p-0 lg:bg-content2 lg:p-1 lg:dark:bg-content1"
         justify="end">
@@ -65,28 +62,7 @@ export default function Header() {
           <ThemeSwitcher />
         </NavbarItem>
         <NavbarItem className="flex max-md:hidden">
-          <Popover offset={12} placement="bottom-end">
-            <PopoverTrigger>
-              <Button
-                disableRipple
-                isIconOnly
-                className="overflow-visible"
-                radius="full"
-                variant="light">
-                <Badge color="danger" content="5" showOutline={false} size="md">
-                  <Icon
-                    className="text-default-500"
-                    icon="solar:bell-linear"
-                    width={22}
-                  />
-                </Badge>
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent className="max-w-[90vw] p-0 sm:max-w-[380px]">
-              {/* <NotificationsCard className="w-full shadow-none" /> */}
-              koko
-            </PopoverContent>
-          </Popover>
+          <NotificationBage/>
         </NavbarItem>
         <NavbarItem className="px-2">
           {true ? (
